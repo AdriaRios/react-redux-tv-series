@@ -1,21 +1,43 @@
+import _ from 'lodash';
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 
 import SearchBar from './search-bar.component';
 
+import { requestSearch } from './search.actions';
+
 class SearchContainer extends React.Component {
 
-    constructor() {
+    constructor(props) {
+        super(props);
 
     }
-    
+
+    searchSeries(term) {
+        this.props.requestSearch(term);
+    }
+
     render() {
+
+        const searchSeries = _.debounce((term) => { this.searchSeries(term) }, 300);
+
         return (
-            <div className="search-container">
-                <h1>Search</h1>
-                <SearchBar />
+            <div className="container search-container">
+
+                <SearchBar onSearchTermChange={searchSeries}/>
             </div>
         );
     }
 }
 
-export default SearchContainer;
+function mapStateToProps(state) {
+    return {
+        series: state.series
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ requestSearch }, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

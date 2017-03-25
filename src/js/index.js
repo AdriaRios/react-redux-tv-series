@@ -9,6 +9,8 @@ import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 
+import Header from './header/header.component';
+
 //browser history
 const history = createBrowserHistory();
 
@@ -30,6 +32,7 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history} >
             <div>
+                <Header/>
                 <Route exact={true} path="/" component={SearchContainer}/>
             </div>
         </ConnectedRouter>
