@@ -27,7 +27,7 @@ export function requestSearch(term) {
             dispatch(fetchSearch(response.data.results));
         })
         .catch((err) => {
-            dispatch(fetchSearch(err));
+            dispatch(fetchSearch([]));
         })
     }
 }

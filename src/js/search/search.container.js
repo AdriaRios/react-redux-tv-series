@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 
 import SearchBar from './search-bar.component';
+import SerieList from './serie-list.component';
 
 import { requestSearch } from './search.actions';
 
@@ -27,6 +28,7 @@ class SearchContainer extends React.Component {
             <div className="container search-container">
 
                 <SearchBar onSearchTermChange={searchSeries}/>
+                <SerieList series={this.props.series} />
             </div>
         );
     }

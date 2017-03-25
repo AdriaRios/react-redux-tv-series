@@ -1,3 +1,13 @@
 .search-container {
 
+    .serie-list {
+        margin-top: 1em;
+        ul {
+            li {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
