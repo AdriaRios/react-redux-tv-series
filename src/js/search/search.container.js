@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { routerActions } from 'react-router-redux';
 
 
 import SearchBar from './search-bar.component';
@@ -14,10 +15,16 @@ class SearchContainer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.showSerieDetails = this.showSerieDetails.bind(this);
     }
 
     searchSeries(term) {
         this.props.requestSearch(term);
+    }
+
+    showSerieDetails(serie_id) {
+        console.log(this);
+        this.props.history.push(`/serie/${serie_id}`);
     }
 
     render() {
@@ -28,7 +35,7 @@ class SearchContainer extends React.Component {
             <div className="container search-container">
 
                 <SearchBar onSearchTermChange={searchSeries}/>
-                <SerieList series={this.props.series} />
+                <SerieList series={this.props.series} onShowSerieDetails={this.showSerieDetails}/>
             </div>
         );
     }
