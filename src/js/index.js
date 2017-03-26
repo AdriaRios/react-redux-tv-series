@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import { Route } from 'react-router-dom';
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';
+
+import Header from './header/header.component';
 
 //browser history
 const history = createBrowserHistory();
@@ -16,11 +18,7 @@ const history = createBrowserHistory();
 const middleware = routerMiddleware(history);
 
 //create store
-const store = createStore(
-    combineReducers({
-        reducers,
-        router: routerReducer
-    }),
+const store = createStore(reducers,
     applyMiddleware(middleware, thunk)
 );
 
@@ -30,6 +28,7 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history} >
             <div>
+                <Header/>
                 <Route exact={true} path="/" component={SearchContainer}/>
             </div>
         </ConnectedRouter>

@@ -1,0 +1,25 @@
+.search-container {
+
+    .serie-list {
+        margin-top: 1em;
+        ul {
+            li {
+                &:hover {
+                    cursor: pointer;
+                    background-color: $gainsboro;
+                }
+
+                .no-image {
+                    box-sizing: content-box;
+                    height: 67px;
+                    width: 45px;
+                    background-color: $verdigris;
+                }
+
+                img, .no-image{
+                    border: 2px solid $liberty;
+                }
+            }
+        }
+    }
+}
