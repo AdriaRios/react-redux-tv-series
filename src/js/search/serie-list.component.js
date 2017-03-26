@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class SerieList extends React.Component {
 
     constructor(props) {
@@ -8,9 +7,7 @@ class SerieList extends React.Component {
     }
 
     showSerieDetails(serie) {
-        console.log(this);
         this.props.onShowSerieDetails(serie.id);
-
     }
 
     renderSerieElements() {

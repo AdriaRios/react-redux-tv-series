@@ -2,8 +2,6 @@ import _ from 'lodash';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { routerActions } from 'react-router-redux';
-
 
 import SearchBar from './search-bar.component';
 import SerieList from './serie-list.component';
@@ -23,7 +21,6 @@ class SearchContainer extends React.Component {
     }
 
     showSerieDetails(serie_id) {
-        console.log(this);
         this.props.history.push(`/serie/${serie_id}`);
     }
 
@@ -46,7 +43,9 @@ function mapStateToProps(state) {
         series: state.series
     };
 }
+
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ requestSearch }, dispatch);
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
