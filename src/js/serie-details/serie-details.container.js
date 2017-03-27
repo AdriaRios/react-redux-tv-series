@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { requestSerieDetails } from './serie-details.actions';
 
+import SeasonList from './season-list.component';
+
 class SerieDetailsContainer extends React.Component {
 
     constructor(props) {
@@ -14,34 +16,10 @@ class SerieDetailsContainer extends React.Component {
         this.props.requestSerieDetails(this.props.match.params.id);
     }
 
-    showSeasonDetails(season) {
-        console.log(season);
-    }
-
     renderGenres() {
         return this.props.serie.genres.map((gen) => {
             return <span className="gen" key={gen.id}>{gen.name}</span>
         })
-    }
-
-    renderSasons() {
-        return this.props.serie.seasons.map((season) => {
-            if(season.season_number != 0) {
-                return (
-                    <li className="list-group-item" key={season.id} onClick={() => this.showSeasonDetails(season)}>
-                        <div className="row">
-                            <div className="col-md-4 season-number"><span className="bold">Season {season.season_number}</span></div>
-                            <div className="col-md-4 episodes">
-                                <span className="bold">Episodes:</span> {season.episode_count}
-                            </div>
-                            <div className="col-md-4 date">
-                                <span className="bold">Air date:</span> {season.air_date}
-                            </div>
-                        </div>
-                    </li>
-                );
-            }
-        });
     }
 
     render() {
@@ -78,10 +56,7 @@ class SerieDetailsContainer extends React.Component {
                 </section>
 
                 <section className="col-md-12 serie-seasons">
-                    <div className="lead bold">Seasons</div>
-                    <ul className="list-group">
-                        {this.props.serie.seasons ? this.renderSasons() : null}
-                    </ul>
+                    {this.props.serie.seasons ? <SeasonList seasons={this.props.serie.seasons} /> : null }
                 </section>
             </div>
         );
