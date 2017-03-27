@@ -3,7 +3,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
 import SearchBar from './search-bar.component';
 import SerieList from './serie-list.component';
 
@@ -14,10 +13,15 @@ class SearchContainer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.showSerieDetails = this.showSerieDetails.bind(this);
     }
 
     searchSeries(term) {
         this.props.requestSearch(term);
+    }
+
+    showSerieDetails(serie_id) {
+        this.props.history.push(`/serie/${serie_id}`);
     }
 
     render() {
@@ -28,7 +32,7 @@ class SearchContainer extends React.Component {
             <div className="container search-container">
 
                 <SearchBar onSearchTermChange={searchSeries}/>
-                <SerieList series={this.props.series} />
+                <SerieList series={this.props.series} onShowSerieDetails={this.showSerieDetails}/>
             </div>
         );
     }
@@ -39,7 +43,9 @@ function mapStateToProps(state) {
         series: state.series
     };
 }
+
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ requestSearch }, dispatch);
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

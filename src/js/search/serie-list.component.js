@@ -7,7 +7,7 @@ class SerieList extends React.Component {
     }
 
     showSerieDetails(serie) {
-        console.log(serie);
+        this.props.onShowSerieDetails(serie.id);
     }
 
     renderSerieElements() {
