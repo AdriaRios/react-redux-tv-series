@@ -26,7 +26,7 @@ class SerieDetailsContainer extends React.Component {
 
     showSeasonDetails(season) {
         console.log(season);
-        this.props.history.push(`/serie/${this.props.serie.id}/season/${season.id}`);
+        this.props.history.push(`/serie/${this.props.serie.id}/season/${season.season_number}`);
     }
 
     render() {

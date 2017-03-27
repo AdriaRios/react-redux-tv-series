@@ -33,7 +33,7 @@ ReactDOM.render(
                 <Header/>
                 <Route exact={true} path="/" component={SearchContainer}/>
                 <Route exact={true} path="/serie/:serie_id" component={SerieDetailsContainer}/>
-                <Route exact={true} path="/serie/:serie_id/season/:season_id" component={SeasonDetailsContainer}/>
+                <Route exact={true} path="/serie/:serie_id/season/:season" component={SeasonDetailsContainer}/>
             </div>
         </ConnectedRouter>
     </Provider>,
