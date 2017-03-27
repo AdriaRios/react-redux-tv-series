@@ -7,7 +7,7 @@ export default class SeasonList extends React.Component {
     }
 
     showSeasonDetails(season) {
-        console.log(season);
+        this.props.onShowSeasonDetails(season);
     }
 
     renderSeasons() {

@@ -10,16 +10,23 @@ class SerieDetailsContainer extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.showSeasonDetails = this.showSeasonDetails.bind(this);
     }
 
     componentWillMount() {
-        this.props.requestSerieDetails(this.props.match.params.id);
+        this.props.requestSerieDetails(this.props.match.params.serie_id);
     }
 
     renderGenres() {
         return this.props.serie.genres.map((gen) => {
             return <span className="gen" key={gen.id}>{gen.name}</span>
         })
+    }
+
+    showSeasonDetails(season) {
+        console.log(season);
+        this.props.history.push(`/serie/${this.props.serie.id}/season/${season.id}`);
     }
 
     render() {
@@ -56,7 +63,7 @@ class SerieDetailsContainer extends React.Component {
                 </section>
 
                 <section className="col-md-12 serie-seasons">
-                    {this.props.serie.seasons ? <SeasonList seasons={this.props.serie.seasons} /> : null }
+                    {this.props.serie.seasons ? <SeasonList seasons={this.props.serie.seasons} onShowSeasonDetails={this.showSeasonDetails} /> : null }
                 </section>
             </div>
         );
