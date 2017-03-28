@@ -10,10 +10,12 @@ class SerieDetailsContainer extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.showSeasonDetails = this.showSeasonDetails.bind(this);
     }
 
     componentWillMount() {
-        this.props.requestSerieDetails(this.props.match.params.id);
+        this.props.requestSerieDetails(this.props.match.params.serie_id);
     }
 
     renderGenres() {
@@ -22,13 +24,18 @@ class SerieDetailsContainer extends React.Component {
         })
     }
 
+    showSeasonDetails(season) {
+        console.log(season);
+        this.props.history.push(`/serie/${this.props.serie.id}/season/${season.season_number}`);
+    }
+
     render() {
         return (
             <div className="container serie-details-container">
                 <section className="col-md-3 poster-image">
                     {
                         this.props.serie.poster_path ?
-                            <img src={`https://image.tmdb.org/t/p/w500${this.props.serie.poster_path}`} className="img-responsive" alt="this.props.serie.name"/> :
+                            <img src={`https://image.tmdb.org/t/p/w500${this.props.serie.poster_path}`} className="img-responsive" alt={this.props.serie.name}/> :
                             <div className="no-image text-center">
                                 <span className="lead">NO IMAGE</span>
                             </div>
@@ -56,7 +63,7 @@ class SerieDetailsContainer extends React.Component {
                 </section>
 
                 <section className="col-md-12 serie-seasons">
-                    {this.props.serie.seasons ? <SeasonList seasons={this.props.serie.seasons} /> : null }
+                    {this.props.serie.seasons ? <SeasonList seasons={this.props.serie.seasons} onShowSeasonDetails={this.showSeasonDetails} /> : null }
                 </section>
             </div>
         );

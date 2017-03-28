@@ -1,32 +1,32 @@
 import axios from 'axios';
 import {
     API_KEY,
-    SERIE_DETAILS_REQUESTED
+    SEASON_DETAILS_REQUESTED
 } from '../constants';
 
 const BASE_URL = 'https://api.themoviedb.org/3/tv';
 
-function fetchSerieDetails(result) {
+function fetchSeasonDetails(result) {
     return {
-        type: SERIE_DETAILS_REQUESTED,
+        type: SEASON_DETAILS_REQUESTED,
         payload: result
     }
 }
 
-export function requestSerieDetails(id) {
+export function requestSeasonDetails(serie_id, season) {
 
     return function(dispatch) {
-        axios.get(`${BASE_URL}/${id}`, {
+        axios.get(`${BASE_URL}/${serie_id}/season/${season}`, {
             params: {
                 api_key: API_KEY,
                 language: 'en-US'
             }
         })
         .then((response) => {
-            dispatch(fetchSerieDetails(response.data));
+            dispatch(fetchSeasonDetails(response.data));
         })
         .catch((err) => {
-            dispatch(fetchSerieDetails(err));
+            dispatch(fetchSeasonDetails(err));
         })
     }
 }

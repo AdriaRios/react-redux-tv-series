@@ -1,0 +1,29 @@
+.season-details-container {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: $gainsboro;
+    border-radius: 0.3em;
+
+    .poster-image {
+
+        img {
+            border: 2px solid $liberty;
+        }
+
+        .no-image {
+            height: 374.84px;
+            width: 100%;
+            background-color: $verdigris;
+            border: 2px solid $liberty;
+            box-sizing: content-box;
+
+            span {
+                line-height: 374px;
+            }
+        }
+    }
+
+    .season-episodes {
+        padding-top: 1em;
+    }
+}

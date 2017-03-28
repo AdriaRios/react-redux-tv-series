@@ -24,6 +24,7 @@ const store = createStore(reducers,
 
 import SearchContainer from './search/search.container';
 import SerieDetailsContainer from './serie-details/serie-details.container';
+import SeasonDetailsContainer from './season-details/season-details.container';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -31,7 +32,8 @@ ReactDOM.render(
             <div>
                 <Header/>
                 <Route exact={true} path="/" component={SearchContainer}/>
-                <Route exact={true} path="/serie/:id" component={SerieDetailsContainer}/>
+                <Route exact={true} path="/serie/:serie_id" component={SerieDetailsContainer}/>
+                <Route exact={true} path="/serie/:serie_id/season/:season" component={SeasonDetailsContainer}/>
             </div>
         </ConnectedRouter>
     </Provider>,
