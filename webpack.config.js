@@ -14,7 +14,8 @@ module.exports = {
     // Setup server
     devServer: {
         inline: true,
-        port: 8081
+        port: 8081,
+        historyApiFallback: true
     },
     devtool: 'source-map',
     module: {

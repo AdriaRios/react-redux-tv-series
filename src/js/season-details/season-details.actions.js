@@ -22,11 +22,11 @@ export function requestSeasonDetails(serie_id, season) {
                 language: 'en-US'
             }
         })
-            .then((response) => {
-                dispatch(fetchSeasonDetails(response.data));
-            })
-            .catch((err) => {
-                dispatch(fetchSeasonDetails(err));
-            })
+        .then((response) => {
+            dispatch(fetchSeasonDetails(response.data));
+        })
+        .catch((err) => {
+            dispatch(fetchSeasonDetails(err));
+        })
     }
 }

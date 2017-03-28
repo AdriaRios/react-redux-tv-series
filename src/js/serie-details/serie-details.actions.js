@@ -22,11 +22,11 @@ export function requestSerieDetails(id) {
                 language: 'en-US'
             }
         })
-            .then((response) => {
-                dispatch(fetchSerieDetails(response.data));
-            })
-            .catch((err) => {
-                dispatch(fetchSerieDetails(err));
-            })
+        .then((response) => {
+            dispatch(fetchSerieDetails(response.data));
+        })
+        .catch((err) => {
+            dispatch(fetchSerieDetails(err));
+        })
     }
 }

@@ -35,7 +35,7 @@ class SerieDetailsContainer extends React.Component {
                 <section className="col-md-3 poster-image">
                     {
                         this.props.serie.poster_path ?
-                            <img src={`https://image.tmdb.org/t/p/w500${this.props.serie.poster_path}`} className="img-responsive" alt="this.props.serie.name"/> :
+                            <img src={`https://image.tmdb.org/t/p/w500${this.props.serie.poster_path}`} className="img-responsive" alt={this.props.serie.name}/> :
                             <div className="no-image text-center">
                                 <span className="lead">NO IMAGE</span>
                             </div>
