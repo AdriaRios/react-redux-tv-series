@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { requestSerieDetails } from './serie-details.actions';
 
@@ -32,6 +33,11 @@ class SerieDetailsContainer extends React.Component {
     render() {
         return (
             <div className="container serie-details-container">
+                <section className="row">
+                    <ul className="back">
+                        <li><Link to="/">{'< Back'}</Link></li>
+                    </ul>
+                </section>
                 <section className="col-md-3 poster-image">
                     {
                         this.props.serie.poster_path ?
