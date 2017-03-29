@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { requestSeasonDetails } from './season-details.actions';
 
@@ -21,6 +22,11 @@ class SeasonDetailsContainer extends React.Component {
     render() {
         return (
             <div className="container season-details-container">
+                <section className="row">
+                    <ul className="back">
+                        <li><Link to={`/serie/${this.props.match.params.serie_id}`}>{'< Back'}</Link></li>
+                    </ul>
+                </section>
                 <section className="col-md-3 poster-image">
                     {
                         this.props.season.poster_path ?
