@@ -1,0 +1,54 @@
+.serie-details-container {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: $gainsboro;
+    border-radius: 0.3em;
+
+    .poster-image {
+
+        img {
+            border: 2px solid $liberty;
+        }
+
+        .no-image {
+            height: 374.84px;
+            width: 100%;
+            background-color: $verdigris;
+            border: 2px solid $liberty;
+            box-sizing: content-box;
+
+            span {
+                line-height: 374px;
+            }
+        }
+    }
+    
+    .serie-info {
+        
+        .genres {
+            .gen {
+                display: inline-block;
+                vertical-align: top;
+                padding: 0.3em;
+                background-color: $liberty;
+                color: white;
+                margin: 0.2em;
+                border-radius: 0.2em;
+            }
+        }
+    }
+
+    .serie-seasons {
+        padding-top: 1em;
+        padding-bottom: 1em;
+
+        ul {
+            li {
+                &:hover {
+                    cursor: pointer;
+                    background-color: $tan;
+                }
+            }
+        }
+    }
+}
